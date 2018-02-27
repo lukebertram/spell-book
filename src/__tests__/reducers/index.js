@@ -16,5 +16,16 @@ describe('Spellbook App', ()=>{
         directoryReducer(initialState.spellDirectory, { type: null })
       ).toEqual(initialState.spellDirectory);
     });
+
+    it('Should update state when API spell directory is being requested.', () => {
+      const action = actions.requestDirectory();
+      const newSpellDirectoryState = {
+        isFetching: true,
+      };
+      expect(
+        directoryReducer(initialState.spellDirectory, action)[action.songId]
+      ).toEqual(newStateEntry);
+    });
+
   });
 });
