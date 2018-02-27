@@ -13,6 +13,9 @@ const localSpellBook = {
 
 export const initialState = {
   selectedSpell: null,
-  spellDirectory: [],
+  spellDirectory: {
+    isFetching: false,
+    spellList: [],
+  },
   localSpells: localSpellBook,
 };

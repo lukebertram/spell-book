@@ -3,8 +3,11 @@ const { initialState, types } = constants;
 
 const directoryReducer = (state = initialState.spellDirectory, action) => {
   switch (action.type) {
-    case 'FARTS':
-      return state;
+    case types.REQUEST_DIRECTORY_LIST:
+      const newSpellDirectoryState = Object.assign({}, state, {
+        isFetching: true
+      });
+      return newSpellDirectoryState;
     default:
       return state;
   }

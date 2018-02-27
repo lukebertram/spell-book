@@ -21,10 +21,11 @@ describe('Spellbook App', ()=>{
       const action = actions.requestDirectory();
       const newSpellDirectoryState = {
         isFetching: true,
+        spellList: []
       };
       expect(
-        directoryReducer(initialState.spellDirectory, action)[action.songId]
-      ).toEqual(newStateEntry);
+        directoryReducer(initialState.spellDirectory, action)
+      ).toEqual(newSpellDirectoryState);
     });
 
   });
