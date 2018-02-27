@@ -5,8 +5,7 @@
 #### By **Luke Bertram** & **Chris Knight Johnson**
 
 ## Description
-
-This project uses AngularJS to build a component-based application for tracking the animals who live at a local zoo. It allows for users to add, edit, and/or remove animal entries.
+This project uses React and Redux. An API call is made to http://www.dnd5eapi.co/api/spells to fetch a list of spells. These spells are stored and displayed locally as a spell directory. A spell from this list can be clicked to display its details. An add spell button can be clicked to store the displayed spell in the spellbook for quicker referencing.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
