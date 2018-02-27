@@ -10,4 +10,4 @@ const selectedSpellReducer = (state = initialState.selectedSpell, action) => {
   }
 };
 
-export default selectedSpellreducer;
+export default selectedSpellReducer;

@@ -14,5 +14,5 @@ const localSpellBook = {
 export const initialState = {
   selectedSpell: null,
   spellDirectory: [],
-  localSpellBook: localSpellBook,
+  localSpells: localSpellBook,
 };

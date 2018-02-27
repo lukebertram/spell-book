@@ -1,5 +1,7 @@
 import constants from './../../constants';
 import * as actions from './../../actions';
+import selectedSpellReducer from './../../reducers/selectedSpellReducer';
+import localSpellsReducer from './../../reducers/localSpellsReducer';
 import directoryReducer from './../../reducers/directoryReducer';
 import rootReducer from './../../reducers/';
 import { createStore } from 'redux';
