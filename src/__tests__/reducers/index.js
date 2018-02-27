@@ -28,5 +28,27 @@ describe('Spellbook App', ()=>{
       ).toEqual(newSpellDirectoryState);
     });
 
+    it('Should update state when spell directory info is received from API', () => {
+      const spellDirectoryResponseResults = [
+        {
+          name: "Spell Name",
+          url: "http://whatintheactualfuck.com"
+        }
+      ];
+      const action = actions.receiveDirectory(spellDirectoryResponseResults);
+      const newSpellDirectoryState = {
+        isFetching: false,
+        spellList: [
+          {
+            name: "Spell Name",
+            url: "http://whatintheactualfuck.com"
+          }
+        ]
+      };
+      expect(
+        directoryReducer(initialState.spellDirectory, action)
+      ).toEqual(newSpellDirectoryState);
+    });
+
   });
 });

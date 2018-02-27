@@ -8,7 +8,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Spell Book</h1>
         <SpellDirectory />
         <div className="localSpellArea">
           <SpellBook />
