@@ -51,4 +51,21 @@ describe('Spellbook App', ()=>{
     });
 
   });
+
+  describe('localSpellsReducer', () => {
+    it('Should update state when API spellInfo is requested', () => {
+      const action = actions.requestSpellInfo(0, 'Magic Missile');
+      const newLocalSpellsState = {
+        "0": {
+          "desc": "Loading...",
+          "id": 0,
+          "isFetching": true, 
+          "name": "Magic Missile"
+        }
+      };
+      expect(
+        localSpellsReducer(initialState.localSpells, action)
+      ).toEqual(newLocalSpellsState);
+    });
+  });
 });
