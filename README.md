@@ -12,6 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+## Specs
+- [ ] Remove 'get directory button' and populate directory on component will mount lifecycle hook
+- [ ] Add header component with links for user sign in
+
 ## Table of Contents
 
 * [Updating to New Releases](#updating-to-new-releases)
