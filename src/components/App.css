@@ -1,26 +1,22 @@
 .App {
-  display: flex;
+  /* display: flex; */
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 100px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+.main {
+  display: flex;
 }
 
 .localSpellArea {
