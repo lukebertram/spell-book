@@ -16,15 +16,22 @@
   color: white;
 }
 
-.App-header > h1{
+.App-header > h1 {
   font-size: 3.5em;
   font-weight: 600;
   letter-spacing: -3px;
 }
 
-
-.main {
+main {
+  width: 100%;
   display: flex;
+}
+main > div {
+  flex-grow: 1;
+}
+
+.spell-info {
+  width: 60%;
 }
 
 .localSpellArea {
@@ -36,6 +43,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
