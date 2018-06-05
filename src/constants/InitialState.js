@@ -9,7 +9,8 @@ const localSpellBook = {
     school: { url: 'rickroll.com', name: 'Evocation' },
     casting_time: '1 Action',
     range: '90 feet',
-    desc: [`Take out your super and lay a massive boom boom on 'em`]
+    desc: [`Take out your super and lay a massive boom boom on 'em`],
+    known: true
   }
 };
 

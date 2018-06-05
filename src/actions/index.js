@@ -35,7 +35,7 @@ export const requestSpellInfo = spellName => ({
 
 export const receiveSpellInfo = spellInfo => ({
   type: types.RECEIVE_SPELL_INFO,
-  newLocalSpellsEntry: spellInfo,
+  receivedSpell: spellInfo,
   name: spellInfo.name
 });
 
@@ -49,10 +49,7 @@ export function fetchSpellInfo(spell) {
       )
       .then(function(json) {
         console.log('SPELL DISPLAY DETAILS: ', json);
-        const name = json.name;
-        const id = json._id;
-        const desc = json.desc;
-        dispatch(receiveSpellInfo(name, id, desc));
+        dispatch(receiveSpellInfo(json));
       });
   };
 }

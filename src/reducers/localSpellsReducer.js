@@ -2,6 +2,7 @@ import constants from './../constants';
 const { initialState, types } = constants;
 
 const localSpellsReducer = (state = initialState.localSpells, action) => {
+  let newLocalSpellsStateSlice;
   switch (action.type) {
     case types.REQUEST_SPELL_INFO:
       const newSpellToAdd = {
@@ -9,13 +10,22 @@ const localSpellsReducer = (state = initialState.localSpells, action) => {
         desc: 'Loading...',
         isFetching: true
       };
-      const newLocalSpellsStateSlice = Object.assign({}, state, {
+      newLocalSpellsStateSlice = Object.assign({}, state, {
         [action.spellName]: newSpellToAdd
       });
       return newLocalSpellsStateSlice;
 
     case types.RECEIVE_SPELL_INFO:
-      return state;
+      const receivedSpell = {
+        ...action.receivedSpell,
+        isFetching: false,
+        known: false
+      };
+
+      newLocalSpellsStateSlice = Object.assign({}, state, {
+        [action.name]: receivedSpell
+      });
+      return newLocalSpellsStateSlice;
 
     default:
       return state;
