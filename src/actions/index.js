@@ -56,7 +56,7 @@ export function fetchSpellInfo(spell) {
 
 // FOR SELECTED SPELL REDUCER
 
-export const selectSpell = selectedSpellId => ({
+export const selectSpell = selectedSpellName => ({
   type: types.SELECT_SPELL,
-  newSelectedSpellId: selectedSpellId
+  newSelectedSpellName: selectedSpellName
 });
