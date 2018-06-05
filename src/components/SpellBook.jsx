@@ -8,16 +8,18 @@ function SpellBook(props) {
       <h3>My Spells</h3>
       <ul className="local-spells">
         {Object.values(props.localSpells).map(spell => {
-          return (
-            <li
-              key={spell.id}
-              onClick={() =>
-                console.log(`Local Spell clicked: ${spell.id}`, spell)
-              }
-            >
-              {spell.name}
-            </li>
-          );
+          if (spell.known) {
+            return (
+              <li
+                key={spell.name}
+                onClick={() =>
+                  console.log(`Local Spell clicked: ${spell.id}`, spell)
+                }
+              >
+                {spell.name}
+              </li>
+            );
+          }
         })}
       </ul>
       <style jsx>{`
