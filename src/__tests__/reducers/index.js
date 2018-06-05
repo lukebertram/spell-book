@@ -6,7 +6,7 @@ import directoryReducer from './../../reducers/directoryReducer';
 import rootReducer from './../../reducers/';
 import { createStore } from 'redux';
 
-describe('Spellbook App', ()=>{
+describe('Spellbook App', () => {
   const { initialState, types } = constants;
   const store = createStore(rootReducer, initialState);
 
@@ -23,16 +23,16 @@ describe('Spellbook App', ()=>{
         isFetching: true,
         spellList: []
       };
-      expect(
-        directoryReducer(initialState.spellDirectory, action)
-      ).toEqual(newSpellDirectoryState);
+      expect(directoryReducer(initialState.spellDirectory, action)).toEqual(
+        newSpellDirectoryState
+      );
     });
 
     it('Should update state when spell directory info is received from API', () => {
       const spellDirectoryResponseResults = [
         {
-          name: "Spell Name",
-          url: "http://whatintheactualfuck.com"
+          name: 'Spell Name',
+          url: 'http://whatintheactualfuck.com'
         }
       ];
       const action = actions.receiveDirectory(spellDirectoryResponseResults);
@@ -40,32 +40,46 @@ describe('Spellbook App', ()=>{
         isFetching: false,
         spellList: [
           {
-            name: "Spell Name",
-            url: "http://whatintheactualfuck.com"
+            name: 'Spell Name',
+            url: 'http://whatintheactualfuck.com'
           }
         ]
       };
-      expect(
-        directoryReducer(initialState.spellDirectory, action)
-      ).toEqual(newSpellDirectoryState);
+      expect(directoryReducer(initialState.spellDirectory, action)).toEqual(
+        newSpellDirectoryState
+      );
     });
-
   });
 
   describe('localSpellsReducer', () => {
     it('Should update state when API spellInfo is requested', () => {
       const action = actions.requestSpellInfo(0, 'Magic Missile');
       const newLocalSpellsState = {
-        "0": {
-          "desc": "Loading...",
-          "id": 0,
-          "isFetching": true, 
-          "name": "Magic Missile"
+        '0': {
+          desc: 'Loading...',
+          id: 0,
+          isFetching: true,
+          name: 'Magic Missile'
         }
       };
+      expect(localSpellsReducer(initialState.localSpells, action)).toEqual(
+        newLocalSpellsState
+      );
+    });
+  });
+
+  describe('selectedSpellReducer', () => {
+    it('Should return default state if no action type is recognized', () => {
       expect(
-        localSpellsReducer(initialState.localSpells, action)
-      ).toEqual(newLocalSpellsState);
+        selectedSpellReducer(initialState.selectedSpell, { type: null })
+      ).toEqual(initialState.selectedSpell);
+    });
+
+    it('Should record which spell has been selected by user', () => {
+      const action = actions.selectSpell(1);
+      expect(selectedSpellReducer(initialState.selectedSpell, action)).toEqual(
+        1
+      );
     });
   });
 });

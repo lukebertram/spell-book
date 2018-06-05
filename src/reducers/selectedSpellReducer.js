@@ -3,8 +3,9 @@ const { initialState, types } = constants;
 
 const selectedSpellReducer = (state = initialState.selectedSpell, action) => {
   switch (action.type) {
-    case 'FARTS':
-      return state;
+    case types.SELECT_SPELL:
+      return action.newSelectedSpellId;
+
     default:
       return state;
   }
