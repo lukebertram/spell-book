@@ -6,14 +6,17 @@ const localSpellsReducer = (state = initialState.localSpells, action) => {
     case types.REQUEST_SPELL_INFO:
       const newSpellToAdd = {
         name: action.spellName,
-        id: action.localSpellId,
         desc: 'Loading...',
         isFetching: true
-      }
+      };
       const newLocalSpellsStateSlice = Object.assign({}, state, {
-        [action.localSpellId]: newSpellToAdd
+        [action.spellName]: newSpellToAdd
       });
       return newLocalSpellsStateSlice;
+
+    case types.RECEIVE_SPELL_INFO:
+      return state;
+
     default:
       return state;
   }

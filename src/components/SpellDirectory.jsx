@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchDirectoryContents } from './../actions';
+import { fetchDirectoryContents, fetchSpellInfo } from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -15,13 +15,13 @@ class SpellDirectory extends React.Component {
       <div className="spell-directory">
         <h3>All Spells</h3>
         <ul>
-          {this.props.spellList.map((spell, index) => {
+          {this.props.spellList.map(spell => {
             return (
               <li
-                key={index}
-                onClick={() =>
-                  console.log(`Spell Item Clicked: ${index + 1}`, spell)
-                }
+                key={spell.name}
+                onClick={() => {
+                  this.props.dispatch(fetchSpellInfo(spell));
+                }}
               >
                 {spell.name}
               </li>

@@ -52,12 +52,11 @@ describe('Spellbook App', () => {
   });
 
   describe('localSpellsReducer', () => {
-    it('Should update state when API spellInfo is requested', () => {
-      const action = actions.requestSpellInfo(0, 'Magic Missile');
+    it('Should update isFetching state when API spellInfo is requested', () => {
+      const action = actions.requestSpellInfo('Magic Missile');
       const newLocalSpellsState = {
-        '0': {
+        'Magic Missile': {
           desc: 'Loading...',
-          id: 0,
           isFetching: true,
           name: 'Magic Missile'
         }

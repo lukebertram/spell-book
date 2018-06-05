@@ -1,5 +1,5 @@
 const localSpellBook = {
-  0: {
+  'Super Boom Boom': {
     id: 0,
     name: 'Super Boom Boom',
     level: 5,

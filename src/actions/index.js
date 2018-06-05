@@ -23,14 +23,14 @@ export function fetchDirectoryContents() {
         console.log('HERE IS THE LIST OF SPELLS, DAWG: ', json);
         dispatch(receiveDirectory(json.results));
       });
+    // add error handling action here?
   };
 }
 
 // FOR LOCAL SPELLS REDUCER
-export const requestSpellInfo = (localSpellId, spellName) => ({
+export const requestSpellInfo = spellName => ({
   type: types.REQUEST_SPELL_INFO,
-  spellName,
-  localSpellId
+  spellName
 });
 
 export const receiveSpellInfo = spellInfo => ({
@@ -41,8 +41,7 @@ export const receiveSpellInfo = spellInfo => ({
 
 export function fetchSpellInfo(spell) {
   return function(dispatch) {
-    const localSpellId = v4();
-    dispatch(requestSpellInfo(localSpellId, spell.name));
+    dispatch(requestSpellInfo(spell.name));
     return fetch(spell.url)
       .then(
         response => response.json(),
@@ -59,6 +58,7 @@ export function fetchSpellInfo(spell) {
 }
 
 // FOR SELECTED SPELL REDUCER
+
 export const selectSpell = selectedSpellId => ({
   type: types.SELECT_SPELL,
   newSelectedSpellId: selectedSpellId
