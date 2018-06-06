@@ -7,6 +7,7 @@ function SpellDisplay(props) {
   if (props.currentSpell) {
     spellInfoArea = (
       <div>
+        <input type="checkbox" checked={this.props.mySpells[currentSpell.name]} onChange={this.props.dispatch(toggleKnown(props.currentSpell))}/>
         <h3>Current Spell:</h3>
         <h1>{props.currentSpell.name}</h1>
         <p>{props.currentSpell.desc}</p>
@@ -25,7 +26,8 @@ SpellDisplay.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    currentSpell: state.localSpells[state.selectedSpell]
+    currentSpell: state.localSpells[state.selectedSpell],
+    mySpells: state.mySpells
   };
 };
 

@@ -54,9 +54,15 @@ export function fetchSpellInfo(spell) {
   };
 }
 
-// FOR SELECTED SPELL REDUCER
-
+// For SELECTED SPELL Reducer
 export const selectSpell = selectedSpellId => ({
   type: types.SELECT_SPELL,
   newSelectedSpellId: selectedSpellId
 });
+
+export const toggleKnown = currentSpell => ({
+  type: types.TOGGLE_SPELL,
+  currentSpell: currentSpell
+});
+
+// FOR MYSPELLS REDUCER
