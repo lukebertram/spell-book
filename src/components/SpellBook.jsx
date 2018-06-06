@@ -7,7 +7,7 @@ function SpellBook(props) {
     <div className="spell-book">
       <h3>My Spells</h3>
       <ul className="local-spells">
-        {Object.values(props.localSpells).map(spell => {
+        {Object.values(props.spellCache).map(spell => {
           if (spell.known) {
             return (
               <li
@@ -34,12 +34,12 @@ function SpellBook(props) {
 
 SpellBook.propTypes = {
   dispatch: PropTypes.func,
-  localSpells: PropTypes.object
+  spellCache: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
-    localSpells: state.localSpells
+    spellCache: state.spellCache
   };
 };
 

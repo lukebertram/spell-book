@@ -1,5 +1,9 @@
 import React from 'react';
-import { fetchDirectoryContents, fetchSpellInfo } from './../actions';
+import {
+  fetchDirectoryContents,
+  fetchSpellInfo,
+  selectSpell
+} from './../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -21,6 +25,7 @@ class SpellDirectory extends React.Component {
                 key={spell.name}
                 onClick={() => {
                   this.props.dispatch(fetchSpellInfo(spell));
+                  this.props.dispatch(selectSpell(spell.name));
                 }}
               >
                 {spell.name}

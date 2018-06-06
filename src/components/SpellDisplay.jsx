@@ -26,8 +26,7 @@ SpellDisplay.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    currentSpell: state.localSpells[state.selectedSpell],
-    mySpells: state.mySpells
+    currentSpell: state.spellCache[state.selectedSpell]
   };
 };
 

@@ -54,10 +54,11 @@ export function fetchSpellInfo(spell) {
   };
 }
 
-// For SELECTED SPELL Reducer
-export const selectSpell = selectedSpellId => ({
+// FOR SELECTED SPELL REDUCER
+
+export const selectSpell = selectedSpellName => ({
   type: types.SELECT_SPELL,
-  newSelectedSpellId: selectedSpellId
+  newSelectedSpellName: selectedSpellName
 });
 
 export const toggleKnown = currentSpell => ({
