@@ -1,8 +1,8 @@
 import constants from './../constants';
 const { initialState, types } = constants;
 
-const localSpellsReducer = (state = initialState.localSpells, action) => {
-  let newLocalSpellsStateSlice;
+const spellCacheReducer = (state = initialState.spellCache, action) => {
+  let newspellCacheStateSlice;
   switch (action.type) {
     case types.REQUEST_SPELL_INFO:
       const newSpellToAdd = {
@@ -10,10 +10,10 @@ const localSpellsReducer = (state = initialState.localSpells, action) => {
         desc: 'Loading...',
         isFetching: true
       };
-      newLocalSpellsStateSlice = Object.assign({}, state, {
+      newspellCacheStateSlice = Object.assign({}, state, {
         [action.spellName]: newSpellToAdd
       });
-      return newLocalSpellsStateSlice;
+      return newspellCacheStateSlice;
 
     case types.RECEIVE_SPELL_INFO:
       const receivedSpell = {
@@ -22,14 +22,14 @@ const localSpellsReducer = (state = initialState.localSpells, action) => {
         known: false
       };
 
-      newLocalSpellsStateSlice = Object.assign({}, state, {
+      newspellCacheStateSlice = Object.assign({}, state, {
         [action.name]: receivedSpell
       });
-      return newLocalSpellsStateSlice;
+      return newspellCacheStateSlice;
 
     default:
       return state;
   }
 };
 
-export default localSpellsReducer;
+export default spellCacheReducer;
