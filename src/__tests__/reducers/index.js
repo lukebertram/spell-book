@@ -1,7 +1,7 @@
 import constants from './../../constants';
 import * as actions from './../../actions';
 import selectedSpellReducer from './../../reducers/selectedSpellReducer';
-import localSpellsReducer from './../../reducers/localSpellsReducer';
+import spellCacheReducer from './../../reducers/spellCacheReducer';
 import directoryReducer from './../../reducers/directoryReducer';
 import rootReducer from './../../reducers/';
 import { createStore } from 'redux';
@@ -51,18 +51,18 @@ describe('Spellbook App', () => {
     });
   });
 
-  describe('localSpellsReducer', () => {
+  describe('spellCacheReducer', () => {
     it('Should update isFetching state when API spellInfo is requested', () => {
       const action = actions.requestSpellInfo('Magic Missile');
-      const newLocalSpellsState = {
+      const newspellCacheState = {
         'Magic Missile': {
           desc: 'Loading...',
           isFetching: true,
           name: 'Magic Missile'
         }
       };
-      expect(localSpellsReducer(initialState.localSpells, action)).toEqual(
-        newLocalSpellsState
+      expect(spellCacheReducer(initialState.spellCache, action)).toEqual(
+        newspellCacheState
       );
     });
   });

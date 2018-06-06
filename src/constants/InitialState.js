@@ -1,4 +1,4 @@
-const localSpellBook = {
+const cachedSpells = {
   'Super Boom Boom': {
     id: 0,
     name: 'Super Boom Boom',
@@ -20,5 +20,6 @@ export const initialState = {
     isFetching: false,
     spellList: []
   },
-  localSpells: localSpellBook
+  spellCache: cachedSpells,
+  mySpells: {}
 };
