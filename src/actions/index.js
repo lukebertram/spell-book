@@ -61,9 +61,9 @@ export const selectSpell = selectedSpellName => ({
   newSelectedSpellName: selectedSpellName
 });
 
-export const toggleKnown = currentSpell => ({
+export const toggleKnown = (selectedSpell, spellCache, mySpells) => ({
   type: types.TOGGLE_SPELL,
-  currentSpell: currentSpell
+  selectedSpell,
+  spellCache,
+  mySpells
 });
-
-// FOR MYSPELLS REDUCER

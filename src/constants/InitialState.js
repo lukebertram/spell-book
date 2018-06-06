@@ -15,8 +15,8 @@ const cachedSpells = {
 };
 
 export const initialState = {
-  selectedSpell: null,
-  mySpells: null,
+  selectedSpell: 'Super Boom Boom',
+  mySpells: {},
   spellDirectory: {
     isFetching: false,
     spellList: []

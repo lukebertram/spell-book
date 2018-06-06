@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect, dispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { toggleKnown } from '../actions';
 
 function SpellDisplay(props) {
   let spellInfoArea;
-  if (props.currentSpell) {
+  if (props.selectedSpell) {
     spellInfoArea = (
       <div>
-        <input type="checkbox" checked={this.props.mySpells[currentSpell.name]} onChange={this.props.dispatch(toggleKnown(props.currentSpell))}/>
+        <input type="checkbox" checked={props.mySpells[props.selectedSpell]} onChange={() => props.dispatch(toggleKnown(props.selectedSpell, props.spellCache, props.mySpells))}/>
         <h3>Current Spell:</h3>
         <h1>{props.currentSpell.name}</h1>
         <p>{props.currentSpell.desc}</p>
@@ -21,12 +22,15 @@ function SpellDisplay(props) {
 
 SpellDisplay.propTypes = {
   dispatch: PropTypes.func,
-  currentSpell: PropTypes.object
+  selectedSpell: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
-    currentSpell: state.spellCache[state.selectedSpell]
+    selectedSpell: state.selectedSpell,
+    currentSpell: state.spellCache[state.selectedSpell],
+    spellCache: state.spellCache,
+    mySpells: state.mySpells
   };
 };
 
