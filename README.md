@@ -5,6 +5,7 @@
 #### By **Luke Bertram** & **Chris Knight Johnson**
 
 ## Description
+
 This project uses React and Redux. An API call is made to [D&D5eAPI](http://www.dnd5eapi.co) to fetch a list of spells. These spells are stored and displayed locally as a spell directory. A spell from this list can be clicked to display its details. An add spell button can be clicked to store the displayed spell in the spellbook for quicker referencing.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -12,9 +13,57 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+## Redux Store
+
+The entire Redux store will look something like this:
+
+```JSON
+{
+  "selectedSpell": "Super Boom Boom",
+  "spellDirectory": {
+    "isFetching": false,
+    "spellList": [
+      {
+        "name": "Magic Missile",
+        "url": "http://www.magic-missile.com"
+      },
+    ]
+  },
+  "spellCache": {
+    "Super Boom Boom": {
+      "_id": 0,
+      "name": "Super Boom Boom",
+      "level": 5,
+      "higher_level": [
+
+      ],
+      "school": { "url": "rickroll.com", "name": "Evocation" },
+      "casting_time": "1 Action",
+      "isFetching": false,
+    }
+  },
+  "mySpells": {
+    "Magic Missile": {
+      "name": "Magic Missile",
+      "url": "http://www.magic-missile.com"
+    }
+  },
+
+}
+```
+
+`spellDirectory` is a list of **ALL** spells as pulled down from the D&D5e API. These spells are stored as objects with `name` and `url` keys. The URL is an address that returns the full spell information from the API.
+
+`spellCache` is where detailed spell information is stored after being received from the API.
+
+`mySpells` is a list of simple spell objects that represent the spells selected as _known_ by a user. These objects include name and url keys. Each object is sorted by a key that is identical to its name property.
+
+`selectedSpell` is a string identifier that matches a key in the `spellCache` state slice. When a spell from either the SpellDirectory component or MySpells component is clicked, this string should be updated to match the name of the clicked spell.
+
 ## Specs
-- [ ] Remove 'get directory button' and populate directory on component will mount lifecycle hook
-- [ ] Add header component with links for user sign in
+
+* [ ] Remove 'get directory button' and populate directory on component will mount lifecycle hook
+* [ ] Add header component with links for user sign in
 
 ## Table of Contents
 
