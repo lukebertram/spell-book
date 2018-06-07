@@ -60,3 +60,10 @@ export const selectSpell = selectedSpellName => ({
   type: types.SELECT_SPELL,
   newSelectedSpellName: selectedSpellName
 });
+
+export const toggleKnown = (selectedSpell, spellCache, mySpells) => ({
+  type: types.TOGGLE_SPELL,
+  selectedSpell,
+  spellCache,
+  mySpells
+});
