@@ -6,17 +6,10 @@ import { toggleKnown } from '../actions';
 class SpellDisplay extends React.Component {
   constructor(props){
     super(props);
-    this.state = ({
-      isKnown: false
-    })
   }
 
   handleIsKnownCheckbox = () => {
-    console.log(this.props.mySpells[this.props.selectedSpell]);
     this.props.dispatch(toggleKnown(this.props.selectedSpell, this.props.spellCache, this.props.mySpells));
-    this.setState({
-      isKnown: !this.props.mySpells[this.props.selectedSpell]
-    });
   }
 
   render(){
@@ -24,7 +17,7 @@ class SpellDisplay extends React.Component {
     if (this.props.selectedSpell) {
       spellInfoArea = (
         <div>
-          <input type="checkbox" checked={this.state.isKnown} onChange={this.handleIsKnownCheckbox}/>
+          <input type="checkbox" checked={!!this.props.mySpells[this.props.selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
           <h3>Current Spell:</h3>
           <h1>{this.props.currentSpell.name}</h1>
           <p>{this.props.currentSpell.desc}</p>
