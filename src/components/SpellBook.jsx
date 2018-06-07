@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {
+  selectSpell
+} from './../actions';
 
 function SpellBook(props) {
   return (
@@ -11,8 +14,9 @@ function SpellBook(props) {
             return (
               <li
                 key={spell.name}
-                onClick={() =>
-                  console.log(`Local Spell clicked: ${spell.name}`, spell)
+                onClick={() => {
+                  console.log(`Local Spell clicked: ${spell.name}`, spell);
+                  props.dispatch(selectSpell(spell.name))}
                 }
               >
                 {spell.name}
