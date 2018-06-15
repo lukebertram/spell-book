@@ -15,7 +15,7 @@ class SpellDisplay extends React.Component {
   render(){
     let spellDisplayArea = <h3>No Spell Selected</h3>;
     const spellDesc = this.props.currentSpell.desc;
-    const descDisplay = Array.isArray(spellDesc) ? spellDesc.map(paragraph => paragraph.replace(/[^\w\s\-\'\,\.\!]/gi, '')) : null;
+    const descDisplay = Array.isArray(spellDesc) ? spellDesc.map(paragraph => paragraph.replace(/â€™/gi, `'`).replace(/â€œ|â€�/gi, ``).replace(/â€”/g, `"`)) : null;
 
     if (this.props.selectedSpell) {
       spellDisplayArea = (
