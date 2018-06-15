@@ -14,13 +14,17 @@ class SpellDisplay extends React.Component {
 
   render(){
     let spellInfoArea = <h3>No Spell Selected</h3>;
+    // const spellDescription = this.props.currentSpell.desc[0].replace(/â€™/gi, "'");
+    const spellDesc = this.props.currentSpell.desc;
+    const descDisplay = Array.isArray(spellDesc) ? spellDesc.map(paragraph => paragraph.replace(/â€™/gi, "'")) : null;
+
     if (this.props.selectedSpell) {
       spellInfoArea = (
         <div>
           <input type="checkbox" checked={!!this.props.mySpells[this.props.selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
           <h3>Current Spell:</h3>
           <h1>{this.props.currentSpell.name}</h1>
-          <p>{this.props.currentSpell.desc}</p>
+          {descDisplay ? descDisplay.map(paragraph => <p>{paragraph}</p>) : spellDesc}
         </div>
       );
     }
