@@ -26,7 +26,6 @@ function SpellBook(props) {
       </ul>
       <style jsx>{`
         .spell-book {
-          min-height: 300px;
           background-color: honeydew;
         }
       `}</style>
