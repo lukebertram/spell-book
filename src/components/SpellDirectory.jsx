@@ -37,6 +37,8 @@ class SpellDirectory extends React.Component {
           .spell-directory {
             text-align: left;
             background-color: palevioletred;
+            height: 100vh;
+            overflow: scroll;
           }
         `}</style>
       </div>
