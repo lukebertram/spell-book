@@ -10,16 +10,28 @@ import PropTypes from 'prop-types';
 class SpellDirectory extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      userInput: ''
+    }
 
     this.props.dispatch(fetchDirectoryContents());
   }
 
+  handleSearchInput(e) {
+    this.setState({
+      userInput: e.target.value
+    });
+  }
+
   render() {
+    const searchRegex = new RegExp(this.state.userInput, "gi");
     return (
       <div className="spell-directory">
-        <h3>All Spells</h3>
+        <h3>Spell Directory</h3>
+        <input placeholder="Search" onChange={this.handleSearchInput.bind(this)}></input>
         <ul>
           {this.props.spellList.map(spell => {
+            if (searchRegex.test(spell.name)) {
             return (
               <li
                 key={spell.name}
@@ -31,7 +43,9 @@ class SpellDirectory extends React.Component {
                 {spell.name}
               </li>
             );
-          })}
+
+          }
+        })}
         </ul>
         <style jsx>{`
           .spell-directory {
