@@ -20,7 +20,10 @@ class SpellDisplay extends React.Component {
     if (this.props.selectedSpell) {
       spellDisplayArea = (
         <div>
-          <input type="checkbox" checked={!!this.props.mySpells[this.props.selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
+          <p>
+            <input type="checkbox" checked={!!this.props.mySpells[this.props.selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
+            Save
+          </p>
           <h3>Current Spell:</h3>
           <h1>{this.props.currentSpell.name}</h1>
           {descDisplay ? descDisplay.map(paragraph => <p>{paragraph}</p>) : spellDesc}
