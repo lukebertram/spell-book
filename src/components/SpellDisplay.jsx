@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect, dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleKnown } from '../actions';
 
@@ -9,20 +9,27 @@ class SpellDisplay extends React.Component {
   }
 
   handleIsKnownCheckbox = () => {
-    this.props.dispatch(toggleKnown(this.props.selectedSpell, this.props.spellCache, this.props.mySpells));
+    const {
+      dispatch,
+      selectedSpell,
+      spellCache,
+      mySpells
+      } = this.props;
+    dispatch(toggleKnown(selectedSpell, spellCache, mySpells));
   }
 
   render(){
+    const { selectedSpell, currentSpell, mySpells } = this.props;
+    const spellDesc = currentSpell.desc;
     let spellDisplayArea = <h3>No Spell Selected</h3>;
-    const spellDesc = this.props.currentSpell.desc;
     const descDisplay = Array.isArray(spellDesc) ? spellDesc.map(paragraph => paragraph.replace(/â€™/gi, `'`).replace(/â€œ|â€�/gi, ``).replace(/â€”/g, `"`)) : null;
 
-    if (this.props.selectedSpell) {
+    if (selectedSpell) {
       spellDisplayArea = (
         <div>
-          <input type="checkbox" checked={!!this.props.mySpells[this.props.selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
+          <input type="checkbox" checked={!!mySpells[selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
           <h3>Current Spell:</h3>
-          <h1>{this.props.currentSpell.name}</h1>
+          <h1>{currentSpell.name}</h1>
           {descDisplay ? descDisplay.map(paragraph => <p>{paragraph}</p>) : spellDesc}
         </div>
       );

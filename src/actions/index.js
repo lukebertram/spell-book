@@ -1,5 +1,6 @@
+import { firebaseConfig } from './../constants/firebaseConfig';
 import * as types from './../constants/ActionTypes';
-import v4 from 'uuid/v4';
+import Firebase from 'firebase';
 
 // FOR DIRECTORY REDUCER
 export const requestDirectory = () => ({
@@ -67,3 +68,5 @@ export const toggleKnown = (selectedSpell, spellCache, mySpells) => ({
   spellCache,
   mySpells
 });
+
+export const firebaseConfigTest = firebaseConfig;
