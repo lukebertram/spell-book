@@ -30,22 +30,23 @@ class SpellDirectory extends React.Component {
         <h3>Spell Directory</h3>
         <input placeholder="Search" onChange={this.handleSearchInput.bind(this)}></input>
         <ul>
-          {this.props.spellList.map(spell => {
+          {this.props.spellList.map( spell => {
             if (searchRegex.test(spell.name)) {
-            return (
-              <li
-                key={spell.name}
-                onClick={() => {
-                  this.props.dispatch(fetchSpellInfo(spell));
-                  this.props.dispatch(selectSpell(spell.name));
-                }}
-              >
-                {spell.name}
-              </li>
-            );
-
-          }
-        })}
+              return (
+                <li
+                  key={spell.name}
+                  onClick={() => {
+                    this.props.dispatch(fetchSpellInfo(spell));
+                    this.props.dispatch(selectSpell(spell.name));
+                  }}
+                >
+                  {spell.name}
+                </li>
+              );
+            } else {
+              return null;
+            }
+          })}
         </ul>
         <style jsx>{`
           .spell-directory {

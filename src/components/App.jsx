@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
-import SpellDirectory from './SpellDirectory';
-import SpellBook from './SpellBook';
-import SpellDisplay from './SpellDisplay';
+import Signin from './Signin';
+import Signup from './Signup';
+import SpellMain from './SpellMain';
 import Header from './Header';
 
 class App extends Component {
@@ -10,11 +11,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <main>
-          <SpellDirectory />
-          <SpellDisplay />
-          <SpellBook />
-        </main>
+        <Route path="/signin" component={Signin}/>
+        <Route path="/signup" component={Signup}/>
+        <Route exact path="/" component={SpellMain}/>
       </div>
     );
   }

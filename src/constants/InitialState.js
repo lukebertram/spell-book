@@ -22,5 +22,6 @@ export const initialState = {
     spellList: []
   },
   spellCache: cachedSpells,
-  mySpells: {}
+  currentUser: null,
+  selectedCharacter: null,
 };

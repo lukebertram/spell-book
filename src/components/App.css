@@ -34,12 +34,12 @@ main > div {
   flex-grow: 1;
 }
 
-.spell-directory, .spell-display, .spell-book {
+.spell-directory, .spell-detail, .spell-book {
   height: calc(100vh - var(--header-height));
   overflow: scroll;
 }
 
-.spell-display {
+.spell-detail {
   width: 60%;
 }
 

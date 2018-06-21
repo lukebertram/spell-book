@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toggleKnown } from '../actions';
 
-class SpellDisplay extends React.Component {
-  constructor(props){
-    super(props);
-  }
+class SpellDetails extends React.Component {
 
   handleIsKnownCheckbox = () => {
     const {
@@ -21,11 +18,13 @@ class SpellDisplay extends React.Component {
   render(){
     const { selectedSpell, currentSpell, mySpells } = this.props;
     const spellDesc = currentSpell.desc;
-    let spellDisplayArea = <h3>No Spell Selected</h3>;
+    let spellDetailArea = <h3>No Spell Selected</h3>;
+
+    // filter out text conversion artifacts from spell database
     const descDisplay = Array.isArray(spellDesc) ? spellDesc.map(paragraph => paragraph.replace(/â€™/gi, `'`).replace(/â€œ|â€�/gi, ``).replace(/â€”/g, `"`)) : null;
 
     if (selectedSpell) {
-      spellDisplayArea = (
+      spellDetailArea = (
         <div>
           <input type="checkbox" checked={!!mySpells[selectedSpell]} onChange={this.handleIsKnownCheckbox}/>
           <h3>Current Spell:</h3>
@@ -34,11 +33,11 @@ class SpellDisplay extends React.Component {
         </div>
       );
     }
-    return <div className="spell-display">{spellDisplayArea}</div>;
+    return <div className="spell-detail">{spellDetailArea}</div>;
   }
 }
 
-SpellDisplay.propTypes = {
+SpellDetails.propTypes = {
   dispatch: PropTypes.func,
   selectedSpell: PropTypes.object
 };
@@ -52,4 +51,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(SpellDisplay);
+export default connect(mapStateToProps)(SpellDetails);

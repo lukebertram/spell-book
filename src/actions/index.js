@@ -1,6 +1,28 @@
-import { firebaseConfig } from './../constants/firebaseConfig';
-import * as types from './../constants/ActionTypes';
-import Firebase from 'firebase';
+import constants from './../constants';
+import firebase from 'firebase';
+const { firebaseConfig, types } = constants;
+
+firebase.initializeApp(firebaseConfig);
+const users = firebase.database().ref('users');
+const characters = firebase.database().ref('characters');
+
+// FIREBASE ACTIONS
+
+// firebase user actions
+
+export function addNewUser(){
+  // set up user reference in firebase
+
+  // set up empty character for new user
+}
+
+// export function addCharacter(_name, _userId, _spellList){
+//   return () => characters.push({
+//     name: _name,
+//     userId: _userId,
+//     spellList: _spellList
+//   });
+// }
 
 // FOR DIRECTORY REDUCER
 export const requestDirectory = () => ({
