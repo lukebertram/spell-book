@@ -11,7 +11,7 @@ class SpellDirectory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userInput: ''
+      userSearchInput: ''
     }
 
     this.props.dispatch(fetchDirectoryContents());
@@ -19,12 +19,12 @@ class SpellDirectory extends React.Component {
 
   handleSearchInput(e) {
     this.setState({
-      userInput: e.target.value
+      userSearchInput: e.target.value
     });
   }
 
   render() {
-    const searchRegex = new RegExp(this.state.userInput, "gi");
+    const searchRegex = new RegExp(this.state.userSearchInput, "gi");
     return (
       <div className="spell-directory">
         <h3>Spell Directory</h3>
